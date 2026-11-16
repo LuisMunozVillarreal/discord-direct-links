@@ -10,6 +10,9 @@ test("version metadata and exact permission boundary stay synchronized", () => {
   assert.equal(manifest.version, pkg.version);
   assert.equal(lock.version, pkg.version);
   assert.equal(lock.packages[""].version, pkg.version);
+  assert.equal(pkg.engines.node, lock.packages["node_modules/jsdom"].engines.node);
+  assert.equal(lock.packages[""].engines.node, pkg.engines.node);
+  assert.ok(fs.readFileSync("README.md", "utf8").includes(pkg.engines.node));
   assert.ok(fs.readFileSync("CHANGELOG.md", "utf8").includes(`## ${pkg.version}\n`));
   assert.equal(manifest.manifest_version, 3);
   assert.deepEqual(Object.keys(manifest).sort(), ["manifest_version", "name", "version", "description", "content_scripts"].sort());

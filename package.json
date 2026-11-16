@@ -4,7 +4,7 @@
   "private": true,
   "description": "Open ordinary external links directly from Discord web.",
   "license": "MIT",
-  "engines": { "node": ">=22.19.0" },
+  "engines": { "node": "^22.22.2 || ^24.15.0 || >=26.0.0" },
   "scripts": {
     "test": "node --test --test-concurrency=2 tests/*.test.cjs",
     "test:browser": "playwright test",

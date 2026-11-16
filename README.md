@@ -30,7 +30,7 @@ To update, replace the files, select **Reload** on the extension's card, verify 
 
 ## Verify locally
 
-Requires Node.js 22.19 or newer and npm. The extension itself has no runtime dependencies.
+Requires npm and Node.js matching `^22.22.2 || ^24.15.0 || >=26.0.0`, as required by the test dependencies. The extension itself has no runtime dependencies.
 
 ```sh
 npm ci --ignore-scripts
