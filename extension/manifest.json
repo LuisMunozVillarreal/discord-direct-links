@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Direct Links",
+  "version": "0.1.0",
+  "description": "Skip Discord web's confirmation for ordinary external links. Leaves download controls alone.",
+  "content_scripts": [{
+    "matches": ["https://discord.com/*", "https://ptb.discord.com/*", "https://canary.discord.com/*"],
+    "js": ["content.js"],
+    "run_at": "document_start",
+    "world": "ISOLATED"
+  }]
+}
