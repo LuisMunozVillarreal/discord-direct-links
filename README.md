@@ -21,7 +21,7 @@ An opaque URL can return a file or redirect somewhere else; the extension does n
 1. Keep this folder in a stable location. Installing from a temporary folder will break when that folder is removed.
 2. Open `chrome://extensions` and enable **Developer mode**.
 3. Select **Load unpacked**, then select the `extension` directory containing `manifest.json`.
-4. Confirm **Discord Direct Links**, version **0.1.0**, is enabled with no reported errors.
+4. Confirm **Discord Direct Links**, version **0.1.1**, is enabled with no reported errors.
 5. Reload each open Discord tab. Loading or reloading an extension does not inject it into pages that were already open.
 
 No build or Node installation is required for unpacked use. Alternatively, install the identical `dist/discord-direct-links` directory produced by the build command.
@@ -30,7 +30,7 @@ To update, replace the files, select **Reload** on the extension's card, verify 
 
 ## Verify locally
 
-Requires npm and Node.js matching `^22.22.2 || ^24.15.0 || >=26.0.0`, as required by the test dependencies. The extension itself has no runtime dependencies.
+Requires Python 3 for upload-package validation, npm and Node.js matching `^22.22.2 || ^24.15.0 || >=26.0.0`, as required by the test dependencies. The extension itself has no runtime dependencies.
 
 ```sh
 npm ci --ignore-scripts
@@ -41,7 +41,7 @@ npm audit --audit-level=low
 
 On Linux CI, `npx playwright install --with-deps chromium` installs the browser's operating-system dependencies too.
 
-`npm run check` runs the Node behavior/manifest/artifact tests, builds the two-file unpacked artifact, then runs Playwright with the actual extension installed in disposable Chromium profiles. Browser tests intercept every request and serve fixtures: they do **not** connect to real Discord or use an existing signed-in profile. They cover a no-extension baseline, all three supported origins, mouse and keyboard navigation, modifier and middle clicks, dynamically added links, attachment/download/dialog exclusions, opener isolation, and the unrelated-site permission boundary.
+`npm run check` runs the Node behavior/manifest/artifact tests, builds the six-file unpacked artifact, then runs Playwright with the actual extension installed in disposable Chromium profiles. Browser tests intercept every request and serve fixtures: they do **not** connect to real Discord or use an existing signed-in profile. They cover a no-extension baseline, all three supported origins, mouse and keyboard navigation, modifier and middle clicks, dynamically added links, attachment/download/dialog exclusions, opener isolation, and the unrelated-site permission boundary.
 
 The GitHub Actions `verify` job runs the same gate and uploads the unpacked build. A workflow file alone is not evidence of a successful hosted run.
 
@@ -58,8 +58,14 @@ Use a trusted existing link and a harmless attachment in Discord. Do not post a 
 
 Fixture tests do not substitute for this live check. Keep any real messages, account information and screenshots out of the public repository.
 
+## Chrome Web Store materials
+
+Version 0.1.1 adds icons and upload materials without changing link-handling behavior. [Upload checklist](store/UPLOAD-CHECKLIST.md), [listing copy](store/listing.md), [privacy declarations](store/privacy-declarations.md), [privacy policy](PRIVACY.md) and [image provenance](store/ASSETS.md) are included. Promotional tiles are optional under the current official requirements. Screenshots show an actual installed-extension demo on a labeled offline fixture, not a private or live Discord session.
+
+`npm run check` also validates asset dimensions, screenshot provenance and package contents. `npm run package:store` creates the extension ZIP and a separate all-materials ZIP under `dist/store/`. Upload only the inner extension ZIP as the extension package. `npm run capture:store` rebuilds and recaptures the demo. Artwork regeneration is optional and requires Python Pillow; ordinary packaging uses only the Python standard library. No store submission, account registration or publication is performed by these scripts.
+
 ## Development
 
-Runtime source is in `extension/`. `scripts/build.cjs` copies only `manifest.json` and `content.js` into `dist/discord-direct-links`; it does not bundle development dependencies. Version tests keep the manifest, package, lockfile and changelog synchronized. Tests live in `tests/`.
+Runtime source is in `extension/`. `scripts/build.cjs` copies only `manifest.json`, `content.js` and the four PNG icons into `dist/discord-direct-links`; it does not bundle development dependencies. Version tests keep the manifest, package, lockfile and changelog synchronized. Tests live in `tests/`.
 
 Licensed under MIT. See [LICENSE](LICENSE).
