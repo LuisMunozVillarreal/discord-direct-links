@@ -1,6 +1,6 @@
 {
   "name": "discord-direct-links",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Open ordinary external links directly from Discord web.",
   "license": "MIT",
@@ -9,7 +9,9 @@
     "test": "node --test --test-concurrency=2 tests/*.test.cjs",
     "test:browser": "playwright test",
     "build": "node scripts/build.cjs",
-    "check": "npm test && npm run build && npm run test:browser"
+    "capture:store": "npm run build && node scripts/capture-store.cjs",
+    "package:store": "python3 scripts/package-store.py",
+    "check": "npm test && npm run build && npm run test:browser && npm run package:store"
   },
   "devDependencies": { "@playwright/test": "1.65.1", "jsdom": "31.0.1" }
 }

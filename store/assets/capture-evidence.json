@@ -1,0 +1,39 @@
+{
+  "extensionVersion": "0.1.1",
+  "browserVersion": "159.0.8154.6",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "provenance": "Installed-extension test fixture; all network requests intercepted; synthetic content; not live Discord. Status text is added by the test runner only after assertions pass.",
+  "results": [
+    {
+      "enabled": false,
+      "screenshot": "screenshot-01-baseline.png",
+      "destinationOpened": false,
+      "confirmationVisible": true,
+      "downloadHandlerVerified": false,
+      "openerIsolatedVerified": false
+    },
+    {
+      "enabled": true,
+      "screenshot": "screenshot-02-enabled.png",
+      "destinationOpened": true,
+      "confirmationVisible": false,
+      "downloadHandlerVerified": true,
+      "openerIsolatedVerified": true
+    }
+  ],
+  "sha256": {
+    "extension/manifest.json": "4cf67589e81d8353e27b4440b7d3fc4f630e95410d7c9851bbab9c4e33c46817",
+    "extension/content.js": "74753bf803774ec3d92358ccb2919de54e1c3ea7c7b1b4c87d4dec17d01c23ed",
+    "extension/icons/icon-16.png": "5d6bf12372b7615cd51bda0b963954683a34bb532a899eda9b62e18325497e68",
+    "extension/icons/icon-32.png": "4567c4631dc851bb7f34a9d5d9132132f866108c8195a7a071a418b9c393f2ca",
+    "extension/icons/icon-48.png": "ca7b26bcecfdcc6f2fb135551837c205517238ba1e276a4e7071a5652ad572a9",
+    "extension/icons/icon-128.png": "f828a72d58f30befc852b61783de7b9bf9d7092a792a7edafc830a935547677c",
+    "store/assets/screenshot-01-baseline.png": "5a4ac9decec4289bf95751dccf770b09f1e1655f377b7f06a2ecfb17e2d95d23",
+    "store/assets/screenshot-02-enabled.png": "2a0f05026da7afb6d2c887258efb38539be110b8b34ded97e5917ba0d70b3e09",
+    "store/demo.html": "40412ba2a6591da114ea6ceeb5f994af810eaa85deac4f911663e615ffe400fb",
+    "scripts/capture-store.cjs": "f59705d346e389fb955e9b4dcc0a2b591a5361cd60e2db64999f782fa810f973"
+  }
+}
